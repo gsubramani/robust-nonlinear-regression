@@ -7,7 +7,7 @@
 import numpy as np
 
 def robust_lsq_ransac(model_error_func, model_fit_func, X,
-               iterations=1000, fit_samples=2, fit_with_best_n=None, priors=None):
+               iterations=1000, fit_samples=2, fit_with_best_n=None, priors=None,norm_func = np.arctan):
 
     if priors == None:
         probabilities = np.ones(len(X))
@@ -25,7 +25,7 @@ def robust_lsq_ransac(model_error_func, model_fit_func, X,
         params = model_fit_func(X_subset)
         errors = model_error_func(X, params)
 
-        current_prob[:] = 1 / np.arctan(1 + errors[:])
+        current_prob[:] = 1 / norm_func(1 + errors[:])
         probabilities *= current_prob
         probabilities /= np.sum(probabilities)
 
@@ -38,7 +38,7 @@ def robust_lsq_ransac(model_error_func, model_fit_func, X,
 
 
 def robust_lsq_m_estimates(model_error_func, model_fit_func, X,
-                           iterations=1000, priors=None):
+                           iterations=1000, priors=None,norm_func = lambda x: 1/(1 + x**0.1)):
     if priors == None:
         probabilities = np.ones(len(X))
     else:
@@ -54,7 +54,9 @@ def robust_lsq_m_estimates(model_error_func, model_fit_func, X,
         if np.sum(errors) < best_errors:
             best_param = params
             best_errors = np.sum(errors)
-        current_prob[:] = 1 / (1 + errors[:] ** 0.1)
+        #current_prob[:] = 1 / (1 + errors[:] ** 0.1)
+
+        current_prob[:] = norm_func(errors[:])
         # current_prob = 1/np.arctan(1+errors)
         probabilities *= current_prob
         probabilities /= np.sum(probabilities)
