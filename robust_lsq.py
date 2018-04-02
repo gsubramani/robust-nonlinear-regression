@@ -3,6 +3,7 @@
 # Date:     April 2nd 2018
 # MIT License
 #####################################
+#TODO Add pythonic documentation elements
 
 import numpy as np
 
