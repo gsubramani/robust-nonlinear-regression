@@ -1,7 +1,7 @@
 #####################################
 # Author:   Guru Subramani
 # Date:     April 2nd 2018
-# MIT license
+# MIT License
 #####################################
 
 import numpy as np
@@ -54,10 +54,8 @@ def robust_lsq_m_estimates(model_error_func, model_fit_func, X,
         if np.sum(errors) < best_errors:
             best_param = params
             best_errors = np.sum(errors)
-        #current_prob[:] = 1 / (1 + errors[:] ** 0.1)
 
         current_prob[:] = norm_func(errors[:])
-        # current_prob = 1/np.arctan(1+errors)
         probabilities *= current_prob
         probabilities /= np.sum(probabilities)
     params = model_fit_func(X, probabilities)

@@ -47,7 +47,7 @@ From an implementation perspective, these are the steps:
 1. Sample n samples from data distribution. 
 1. Fit model to the selected n samples. 
 Essentially we are selecting(sampling) the best model given the data. 
-This is P(model/data) step. 
+This is the P(model/data) step. 
 1. Estimate a probability distribution: P(data/model). 
     1. These are the errors of the data given the selected model. 
     1. It is wise to use a function such as arctan(1/errors)
@@ -65,10 +65,10 @@ For a RANSAC flavor of bayesian robust fitting, k samples are selected to fit th
 #### In classical RANSAC:
 1. The minimum number of samples (k) to fit a model is used.
 1. k samples are randomly selected p times.  
-1. The best set of samples that fit all the data is selected.   
+1. The best set in p of k samples that fit all the data is selected.   
 
 #### In this bayesian flavor:
-1. k samples are selected and fit using least squares (or anything else). 
+1. k samples are selected and fit using least squares (or something else). 
 1. Samples are selected from a probability distribution estimated using bayesian updates. 
 
 ### M-Estimates
@@ -81,7 +81,7 @@ The probability distribution(weights) is updated using bayesian updates.
  perform outlier detection. Simply apply a threshold over this distribution. 
 
 
-## license
+## License
 Copyright 2018 Guru Subramani
 
 Permission is hereby granted, free of charge, 
