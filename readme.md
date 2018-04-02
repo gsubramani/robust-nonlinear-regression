@@ -6,7 +6,7 @@ Fitting a known model robustly to data using bayesian iteration. The two impleme
 The robust part is implemented, fitting the function is not. Model 
 fitting is borrowed from the scipy.minimize. Feel free to use a different model fitting method.  
 
-## Pre-requisites
+## Requirements
 **numpy** is the only pre-requisite for **robust_lsq.py**.
 **robust_lsq.py** requires a least squares fitting function
 (or some other fitting function), 
