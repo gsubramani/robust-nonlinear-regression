@@ -27,7 +27,7 @@ such as **scipy.optimize.minimize**. Please see example
 
 ## Setup
 Please run **test.py** for an example of fitting a straight line
-to data robustly with bayesian sampling. 
+to data robustly with bayesian estimation. 
 
 ## How does it work? 
 The key idea is to determine the samples that fit the model best. 
