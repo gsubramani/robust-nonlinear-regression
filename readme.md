@@ -1,4 +1,4 @@
-# Robust Least Squares and Outlier Detection
+# Robust Regression and Outlier Detection
 Fitting a known model robustly to data using bayesian iteration. The two implementations use
 * RANSAC
 * M-Estimates
