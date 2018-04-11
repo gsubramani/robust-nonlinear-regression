@@ -41,13 +41,20 @@ if __name__ == "__main__":
     outlier_x = x_measured[outlier_indices]
     outlier_y = y_measured[outlier_indices]
 
-
+    plt.subplot(2,1,1)
     plt.plot(x_actual, y_actual, '.b')
     plt.plot(x_measured, y_measured, '.g')
     plt.plot(x_measured, x_measured * sol_lsq.x[0] + sol_lsq.x[1], 'r')
-    plt.plot(x_measured, x_measured * params[0] + params[1], '.k')
+    plt.legend(['Least Squares Fit','actual data(without outliers)', 'measured data'])
+
+    plt.subplot(2,1,2)
+    #plt.plot(x_measured, y_measured, '.g')
+    plt.plot(x_measured, x_measured * sol_lsq.x[0] + sol_lsq.x[1], 'r')
+    plt.plot(x_measured, x_measured * params[0] + params[1], '-k')
     plt.plot(x_measured, x_measured * paramsMest[0] + paramsMest[1], '--k')
     plt.plot(robust_fit_x, robust_fit_y, 'ok')
     plt.plot(outlier_x, outlier_y, 'xk')
+
+    plt.legend(['Least Squares Fit','RANSAC','M-Estimates','Correct Data','Outliers'])
     plt.show()
 
