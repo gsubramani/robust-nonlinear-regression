@@ -45,7 +45,7 @@ if __name__ == "__main__":
     plt.plot(x_actual, y_actual, '.b')
     plt.plot(x_measured, y_measured, '.g')
     plt.plot(x_measured, x_measured * sol_lsq.x[0] + sol_lsq.x[1], 'r')
-    plt.legend(['Least Squares Fit','actual data(without outliers)', 'measured data'])
+    plt.legend(['actual data(without outliers)','measured data','Least Squares Fit'])
 
     plt.subplot(2,1,2)
     #plt.plot(x_measured, y_measured, '.g')
